@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kadal Unavagam – Authentic Coastal Tamil Cuisine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --red:#c1121f; --orange:#e85d04; --yellow:#faa307;
+      --dark:#1b0000; --bg:#fffbf7; --card:#fff8f0;
+      --text:#2d1a00; --muted:#a0866a; --white:#ffffff;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 5%;
+      background:rgba(255,251,247,0.93);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(193,18,31,0.1);
+    }
+    .logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--dark);}
+    .logo span{color:var(--red);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.3s;}
+    .nav-links a:hover{color:var(--red);}
+    .nav-btn{background:var(--red);color:var(--white);border:none;padding:0.55rem 1.3rem;border-radius:50px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600;font-size:0.85rem;transition:all 0.3s;}
+    .nav-btn:hover{background:#a00e19;transform:translateY(-1px);}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;
+      padding:6rem 5% 4rem;position:relative;overflow:hidden;
+      background:linear-gradient(135deg, #1b0000 0%, #3d0e00 50%, #1b0000 100%);
+    }
+    .hero-circles{position:absolute;inset:0;}
+    .hero-circles::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,4,0.15) 0%,transparent 70%);}
+    .hero-circles::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(193,18,31,0.1) 0%,transparent 70%);}
+    .hero-content{position:relative;z-index:2;max-width:580px;}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,163,7,0.15);border:1px solid rgba(250,163,7,0.3);color:var(--yellow);padding:0.35rem 1rem;border-radius:50px;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeUp 0.7s 0.2s ease both;}
+    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:1.05;color:var(--white);margin-bottom:1.2rem;animation:fadeUp 0.7s 0.35s ease both;}
+    .hero h1 span{color:var(--orange);}
+    .hero-tamil{font-size:1.1rem;color:rgba(255,255,255,0.5);margin-bottom:1rem;font-style:italic;animation:fadeUp 0.7s 0.45s ease both;}
+    .hero p{color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp 0.7s 0.55s ease both;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.7s ease both;}
+    .btn-fire{background:linear-gradient(135deg,var(--red),var(--orange));color:var(--white);padding:0.9rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.3s;box-shadow:0 4px 16px rgba(193,18,31,0.3);}
+    .btn-fire:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(193,18,31,0.4);}
+    .btn-ring{background:transparent;color:var(--white);padding:0.9rem 2rem;border-radius:50px;text-decoration:none;font-weight:500;font-size:0.95rem;border:1px solid rgba(255,255,255,0.25);transition:all 0.3s;}
+    .btn-ring:hover{border-color:var(--orange);color:var(--orange);}
+    .hero-food{position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:10rem;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.5));}
+    @keyframes float{0%,100%{transform:translateY(-50%);}50%{transform:translateY(calc(-50% - 15px));}}
+
+    /* MENU */
+    .menu{padding:6rem 5%;max-width:1200px;margin:0 auto;}
+    .sec-label{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);margin-bottom:0.4rem;}
+    .sec-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:0.5rem;color:var(--dark);}
+    .sec-sub{color:var(--muted);font-size:0.95rem;margin-bottom:3rem;line-height:1.7;}
+
+    /* Category tabs */
+    .menu-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+    .tab{background:transparent;border:1px solid rgba(193,18,31,0.2);color:var(--muted);padding:0.5rem 1.2rem;border-radius:50px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:500;transition:all 0.3s;}
+    .tab.active,.tab:hover{background:var(--red);color:var(--white);border-color:var(--red);}
+
+    .menu-section{display:none;}
+    .menu-section.active{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+    .menu-item{
+      background:var(--card);border:1px solid rgba(193,18,31,0.08);
+      border-radius:12px;padding:1.2rem 1.4rem;
+      display:flex;align-items:center;gap:1rem;
+      transition:all 0.3s;
+    }
+    .menu-item:hover{border-color:rgba(193,18,31,0.25);box-shadow:0 4px 20px rgba(193,18,31,0.08);transform:translateY(-2px);}
+    .item-emoji{font-size:2.2rem;min-width:50px;text-align:center;}
+    .item-info{flex:1;}
+    .item-name{font-weight:700;font-size:1rem;margin-bottom:0.2rem;color:var(--dark);}
+    .item-desc{color:var(--muted);font-size:0.8rem;line-height:1.5;}
+    .item-tags{display:flex;gap:0.3rem;margin-top:0.4rem;}
+    .tag-spicy{background:rgba(193,18,31,0.1);color:var(--red);padding:0.1rem 0.5rem;border-radius:4px;font-size:0.7rem;font-weight:600;}
+    .tag-veg{background:rgba(0,128,0,0.08);color:#166534;padding:0.1rem 0.5rem;border-radius:4px;font-size:0.7rem;font-weight:600;}
+    .tag-best{background:rgba(250,163,7,0.15);color:#b45309;padding:0.1rem 0.5rem;border-radius:4px;font-size:0.7rem;font-weight:600;}
+    .item-price{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--red);white-space:nowrap;}
+
+    /* SPECIALS */
+    .specials{padding:6rem 5%;background:var(--dark);}
+    .spec-inner{max-width:1100px;margin:0 auto;}
+    .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+    .spec-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:2rem;text-align:center;transition:all 0.35s;}
+    .spec-card:hover{border-color:rgba(232,93,4,0.4);transform:translateY(-4px);}
+    .spec-emoji{font-size:3rem;margin-bottom:1rem;display:block;}
+    .spec-name{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;}
+    .spec-desc{color:rgba(255,255,255,0.5);font-size:0.85rem;line-height:1.6;margin-bottom:1rem;}
+    .spec-price{font-size:1.4rem;font-weight:700;color:var(--yellow);}
+
+    /* ORDER */
+    .order{padding:6rem 5%;text-align:center;max-width:620px;margin:0 auto;}
+    .order-box{background:linear-gradient(135deg,var(--red),var(--orange));border-radius:20px;padding:3.5rem;margin-top:2.5rem;position:relative;overflow:hidden;}
+    .order-box::before{content:'🍛';position:absolute;top:-10px;right:-10px;font-size:8rem;opacity:0.15;}
+    .order-box h3{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--white);margin-bottom:0.8rem;}
+    .order-box p{color:rgba(255,255,255,0.8);margin-bottom:2rem;line-height:1.6;}
+    .order-links{display:flex;flex-direction:column;gap:0.8rem;}
+    .o-link{display:flex;align-items:center;gap:0.8rem;background:rgba(255,255,255,0.15);border-radius:10px;padding:0.9rem 1.2rem;text-decoration:none;color:var(--white);transition:background 0.3s;font-size:0.9rem;font-weight:500;backdrop-filter:blur(4px);}
+    .o-link:hover{background:rgba(255,255,255,0.25);}
+
+    footer{background:var(--dark);padding:2rem 5%;text-align:center;color:rgba(255,255,255,0.3);font-size:0.8rem;}
+    footer b{color:var(--orange);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:900px){.hero-food{display:none;}.spec-grid{grid-template-columns:1fr 1fr;}.nav-links{display:none;}}
+    @media(max-width:600px){.menu-section.active{grid-template-columns:1fr;}.spec-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Kadal <span>Unavagam</span></div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#specials">Specials</a></li>
+    <li><a href="#order">Order Now</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-circles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🔥 Mandapam · Est. 1995</div>
+    <h1>Authentic<br/><span>Coastal</span><br/>Cuisine</h1>
+    <p class="hero-tamil">கடல் உணவகம் — Sea Food Restaurant</p>
+    <p>Fresh-caught seafood cooked in traditional Ramanathapuram style. No frozen fish. No shortcuts. Just pure coastal flavour passed down for generations.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-fire">🍽️ View Full Menu</a>
+      <a href="#order" class="btn-ring">Order via WhatsApp →</a>
+    </div>
+  </div>
+  <div class="hero-food">🦐</div>
+</section>
+
+<section class="menu" id="menu">
+  <p class="sec-label reveal">Digital Menu</p>
+  <h2 class="sec-title reveal">What We Serve</h2>
+  <p class="sec-sub reveal">All seafood is sourced fresh daily from Mandapam fishermen. Prices include rice or parotta.</p>
+
+  <div class="menu-tabs">
+    <button class="tab active" onclick="showTab('seafood',this)">🐟 Seafood</button>
+    <button class="tab" onclick="showTab('rice',this)">🍚 Rice & Biryani</button>
+    <button class="tab" onclick="showTab('veg',this)">🥦 Veg Items</button>
+    <button class="tab" onclick="showTab('drinks',this)">🥤 Drinks</button>
+  </div>
+
+  <!-- Seafood -->
+  <div class="menu-section active" id="seafood">
+    <div class="menu-item reveal"><div class="item-emoji">🦐</div><div class="item-info"><div class="item-name">Prawn Masala Fry</div><div class="item-desc">Tiger prawns fried in coastal spice mix. Served with onion salad.</div><div class="item-tags"><span class="tag-spicy">🌶 Spicy</span><span class="tag-best">⭐ Best Seller</span></div></div><div class="item-price">₹280</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🐟</div><div class="item-info"><div class="item-name">Vanjaram (Seer Fish) Fry</div><div class="item-desc">Fresh seer fish marinated and pan fried in sesame oil. King of fish fries.</div><div class="item-tags"><span class="tag-best">⭐ Must Try</span></div></div><div class="item-price">₹320</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🦑</div><div class="item-info"><div class="item-name">Squid Pepper Fry</div><div class="item-desc">Tender squid rings tossed in black pepper and coastal masala.</div><div class="item-tags"><span class="tag-spicy">🌶 Spicy</span></div></div><div class="item-price">₹240</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🦀</div><div class="item-info"><div class="item-name">Crab Curry</div><div class="item-desc">Whole mud crab in thick coconut-based curry. Best with rice.</div><div class="item-tags"><span class="tag-best">⭐ Famous</span></div></div><div class="item-price">₹380</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🐡</div><div class="item-info"><div class="item-name">Nethili (Anchovy) Fry</div><div class="item-desc">Small fish fried crispy with chili and fennel. Eat with sambar rice.</div><div class="item-tags"><span class="tag-spicy">🌶 Hot</span></div></div><div class="item-price">₹120</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🍲</div><div class="item-info"><div class="item-name">Fish Head Curry</div><div class="item-desc">Traditional Ramanathapuram style fish head curry. Slow cooked with tamarind.</div><div class="item-tags"><span class="tag-best">⭐ Signature</span></div></div><div class="item-price">₹200</div></div>
+  </div>
+
+  <!-- Rice -->
+  <div class="menu-section" id="rice">
+    <div class="menu-item reveal"><div class="item-emoji">🍛</div><div class="item-info"><div class="item-name">Prawn Biryani</div><div class="item-desc">Fragrant basmati with tiger prawns, saffron & whole spices. Serves 1.</div><div class="item-tags"><span class="tag-best">⭐ Most Ordered</span></div></div><div class="item-price">₹320</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🍚</div><div class="item-info"><div class="item-name">Fish Biryani</div><div class="item-desc">Seer fish layered biryani cooked dum style. Served with raita.</div><div class="item-tags"><span class="tag-best">⭐ Chef Special</span></div></div><div class="item-price">₹280</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🥘</div><div class="item-info"><div class="item-name">Crab Rice</div><div class="item-desc">Rice cooked in crab gravy — unique Ramanathapuram style one-pot meal.</div><div class="item-tags"><span class="tag-spicy">🌶 Spicy</span></div></div><div class="item-price">₹350</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🍱</div><div class="item-info"><div class="item-name">Meals (Full Thali)</div><div class="item-desc">Rice, sambar, rasam, 2 curries, papad, pickle, and buttermilk.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹110</div></div>
+  </div>
+
+  <!-- Veg -->
+  <div class="menu-section" id="veg">
+    <div class="menu-item reveal"><div class="item-emoji">🧅</div><div class="item-info"><div class="item-name">Onion Uthappam</div><div class="item-desc">Thick rice pancake topped with onions, tomato, and green chili.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹80</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🥞</div><div class="item-info"><div class="item-name">Parotta + Kurma</div><div class="item-desc">Layered flaky parotta served with mixed vegetable kurma.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹90</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🍜</div><div class="item-info"><div class="item-name">Vegetable Biryani</div><div class="item-desc">Aromatic basmati with seasonal vegetables and fried onions.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹160</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🫘</div><div class="item-info"><div class="item-name">Idli + Sambar (3 pcs)</div><div class="item-desc">Soft steamed idli served with piping hot sambar and coconut chutney.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹60</div></div>
+  </div>
+
+  <!-- Drinks -->
+  <div class="menu-section" id="drinks">
+    <div class="menu-item reveal"><div class="item-emoji">🥥</div><div class="item-info"><div class="item-name">Fresh Tender Coconut</div><div class="item-desc">Straight from the coast — nothing fresher than this.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹40</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🥛</div><div class="item-info"><div class="item-name">Buttermilk (Moru)</div><div class="item-desc">Spiced chaas with ginger and curry leaves. Perfect after spicy food.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹30</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">🍹</div><div class="item-info"><div class="item-name">Fresh Lime Soda</div><div class="item-desc">Sweet, salty, or mixed — freshly squeezed with soda water.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹50</div></div>
+    <div class="menu-item reveal"><div class="item-emoji">☕</div><div class="item-info"><div class="item-name">Filter Coffee</div><div class="item-desc">Strong South Indian filter coffee, served in traditional davara tumbler.</div><div class="item-tags"><span class="tag-veg">🌿 Veg</span></div></div><div class="item-price">₹25</div></div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials" id="specials">
+  <div class="spec-inner">
+    <p class="sec-label" style="color:var(--orange);" class="reveal">Chef's Picks</p>
+    <h2 class="sec-title reveal" style="color:var(--white);">Weekend Specials</h2>
+    <div class="spec-grid">
+      <div class="spec-card reveal">
+        <span class="spec-emoji">🦞</span>
+        <div class="spec-name">Lobster Fry</div>
+        <p class="spec-desc">Whole lobster marinated in 12 spices and grilled to perfection. Available Saturday & Sunday only.</p>
+        <div class="spec-price">₹850</div>
+      </div>
+      <div class="spec-card reveal">
+        <span class="spec-emoji">🎣</span>
+        <div class="spec-name">Catch of the Day</div>
+        <p class="spec-desc">Whatever the fishermen bring in fresh that morning — prepared your way. Price depends on catch.</p>
+        <div class="spec-price">Market Price</div>
+      </div>
+      <div class="spec-card reveal">
+        <span class="spec-emoji">🍱</span>
+        <div class="spec-name">Family Feast Box</div>
+        <p class="spec-desc">Feeds 4–6 people. Prawn fry, fish curry, crab masala, rice, parottas, and drinks. Pre-order only.</p>
+        <div class="spec-price">₹1,200</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <p class="sec-label reveal">Order & Reserve</p>
+  <h2 class="sec-title reveal">Table Booking & Takeaway</h2>
+  <div class="order-box reveal">
+    <h3>📱 Order Now</h3>
+    <p>WhatsApp your order or call us directly. Takeaway ready in 20–30 minutes. Dine-in open 7 AM – 10 PM.</p>
+    <div class="order-links">
+      <a href="https://wa.me/919994333333" class="o-link">📲 WhatsApp Order: +91 99943 33333</a>
+      <a href="tel:+919994333333" class="o-link">📞 Call: +91 99943 33333</a>
+      <div class="o-link">📍 Main Road, Mandapam, Ramanathapuram – 623 519</div>
+      <div class="o-link">⏰ Open: 7:00 AM – 10:00 PM (All Days)</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2025 <b>Kadal Unavagam</b>. Fresh Coastal Food | Mandapam, Ramanathapuram, Tamil Nadu</p></footer>
+
+<script>
+  function showTab(section, btn) {
+    document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(section).classList.add('active');
+    btn.classList.add('active');
+  }
+  const observer = new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(r=>observer.observe(r));
+</script>
+</body>
+</html>
